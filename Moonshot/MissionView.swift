@@ -28,6 +28,11 @@ struct MissionView: View {
                         .frame(maxWidth: geo.size.width * 0.7)
                         .padding(.top)
 
+                     /*
+                     Add the launch date to MissionView, below the mission badge.
+                     */
+                    Text("Launched: \(self.mission.formattedLaunchDate)")
+
                     Text(self.mission.description)
                         .padding()
 
@@ -89,7 +94,6 @@ struct MissionView: View {
 
         self.astronauts = matches
     }
-
 
 }
 
