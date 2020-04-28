@@ -38,4 +38,14 @@ struct Mission: Codable, Identifiable {
         }
 
     }
+
+    var formattedCrew: String {
+
+        var crewMembers = [String]()
+        for member in crew {
+            crewMembers.append(member.name.capitalized)
+        }
+        return crewMembers.joined(separator: ", ")
+
+    }
 }

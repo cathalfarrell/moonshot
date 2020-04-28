@@ -14,6 +14,8 @@ struct ContentView: View {
 
     let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
+
+    @State private var isShowingDate = true
     
     var body: some View {
         NavigationView {
@@ -28,13 +30,21 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)
-                        Text(mission.formattedLaunchDate)
+                        Text(self.isShowingDate ? mission.formattedLaunchDate : mission.formattedCrew)
                     }
                 }
             }.navigationBarTitle("Moonshot")
+            .navigationBarItems(leading: Button("Show Date/Crew") {
+                self.isShowingDate.toggle()
+            })
 
         }
     }
+
+    /*
+     Challenge 3
+     Make a bar button in ContentView that toggles between showing launch dates and showing crew names.
+     */
 }
 
 struct ContentView_Previews: PreviewProvider {
